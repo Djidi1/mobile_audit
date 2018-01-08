@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>Checklists</h2>
+            <h3>Checklists</h3>
             <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
                 <a href="{{route('checklists.create')}}" class="btn-floating btn-large waves-effect waves-light right pulse green"><i class="material-icons">add</i></a>
             </div>
