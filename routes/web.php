@@ -36,6 +36,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
 
         Route::resource('cl_categories', 'ClCategoryController');
         Route::resource('checklists', 'ChecklistController');
+        Route::resource('requirements', 'RequirementController');
 
     });
 });

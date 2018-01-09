@@ -36,6 +36,7 @@
     @else
         <li><a href="{{ route('cl_categories.index') }}">Categories</a></li>
         <li><a href="{{ route('checklists.index') }}">Checklists</a></li>
+        <li><a href="{{ route('requirements.index') }}">Requirements</a></li>
         @can('user_create')
             <hr>
             <li><a href="{{ route('admin.users.index') }}">@lang('quickadmin.qa_users')</a></li>
