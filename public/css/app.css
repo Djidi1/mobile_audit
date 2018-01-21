@@ -70,3 +70,10 @@ a.brand-logo {
   padding: 0 15px !important;
 }
 
+.help-block {
+  color: grey;
+  top: -18px;
+  position: relative;
+  font-size: 80%;
+}
+

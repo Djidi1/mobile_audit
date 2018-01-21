@@ -1,6 +1,7 @@
 <?php
 return [
 
+    'title' => 'MobileAudit',
     'language' => 'Локализация',
     'lg_russian' => 'Русский',
     'lg_english' => 'English',

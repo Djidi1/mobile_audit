@@ -39,6 +39,7 @@
         <li><a href="{{ route('requirements.index') }}">Requirements</a></li>
         @can('user_create')
             <hr>
+            <li><a href="{{ route('admin.app_tokens.index') }}">@lang('quickadmin.qa_apps')</a></li>
             <li><a href="{{ route('admin.users.index') }}">@lang('quickadmin.qa_users')</a></li>
             <li><a href="{{ route('admin.roles.index') }}">@lang('quickadmin.qa_roles')</a></li>
         @endcan
