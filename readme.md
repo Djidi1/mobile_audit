@@ -3,3 +3,6 @@
  
 Для получения изменений из Гита:
     `git pull origin master`
+    
+Для запуска сервера:
+    `npm run watch`
