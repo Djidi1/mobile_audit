@@ -41,7 +41,8 @@ class AuditObjectGroupsController extends Controller
             'title' => 'required|min:3'
         ]);
         AuditObjectGroup::create($request->all());
-        return redirect()->route('AuditObjectGroups.index');
+        return redirect('audit_object_groups');
+//        return redirect()->route('AuditObjectGroups.index');
     }
 
     /**
@@ -80,7 +81,8 @@ class AuditObjectGroupsController extends Controller
             'title' => 'required|min:3'
         ]);
         $AuditObjectGroup->update($request->all());
-        return redirect()->route('AuditObjectGroups.index');
+        return redirect('audit_object_groups');
+//        return redirect()->route('AuditObjectGroups.index');
     }
 
     /**
@@ -93,6 +95,7 @@ class AuditObjectGroupsController extends Controller
     public function destroy(AuditObjectGroup $AuditObjectGroup)
     {
         $AuditObjectGroup->delete();
-        return redirect()->route('AuditObjectGroups.index');
+        return redirect('audit_object_groups');
+//       return redirect()->route('AuditObjectGroups.index');
     }
 }
