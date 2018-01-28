@@ -9,8 +9,8 @@
 
 
     <link rel="icon" type="image/png" href="{{ asset('images/ma_logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/ma_logo.png') }}">
-    <link rel="apple-touch-startup-image" href="{{ asset('images/ma_logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/ma_logo_550.png') }}">
+    <link rel="apple-touch-startup-image" href="{{ asset('images/ma_logo_550.png') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
