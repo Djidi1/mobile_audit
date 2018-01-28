@@ -34,9 +34,12 @@
         <li><a href="{{ route('login') }}">@lang('main.login')</a></li>
         <li><a href="{{ route('register') }}">@lang('main.register')</a></li>
     @else
-        <li><a href="{{ route('cl_categories.index') }}">Categories</a></li>
-        <li><a href="{{ route('checklists.index') }}">Checklists</a></li>
-        <li><a href="{{ route('requirements.index') }}">Requirements</a></li>
+        <li><a href="{{ route('cl_categories.index') }}">@lang('main.audit.categories')</a></li>
+        <li><a href="{{ route('checklists.index') }}">@lang('main.audit.checklists')</a></li>
+        <li><a href="{{ route('requirements.index') }}">@lang('main.audit.requirements')</a></li>
+        <hr>
+        <li><a href="{{ route('audit_objects.index') }}">@lang('main.audit.objects')</a></li>
+        <li><a href="{{ route('audit_object_groups.index') }}">@lang('main.audit.object_groups')</a></li>
         @can('user_create')
             <hr>
             <li><a href="{{ route('admin.app_tokens.index') }}">@lang('quickadmin.qa_apps')</a></li>

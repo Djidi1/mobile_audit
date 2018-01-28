@@ -6,3 +6,6 @@
     
 Для запуска сервера:
     `npm run watch`
+    
+Если есть проблемы с памятью при запуске в консоли:
+    `php -d memory_limit=-1 composer.phar require laravel/passport`        

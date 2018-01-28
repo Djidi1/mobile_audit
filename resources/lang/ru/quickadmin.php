@@ -1,28 +1,28 @@
 <?php
 
 return [
-	
+
 	'user-management' => [
-		'title' => 'User management',
+		'title' => 'Управление пользователями',
 		'fields' => [
 		],
 	],
 	
 	'roles' => [
-		'title' => 'Roles',
+		'title' => 'Роли',
 		'fields' => [
-			'title' => 'Title',
+			'title' => 'Название',
 		],
 	],
 	
 	'users' => [
-		'title' => 'Users',
+		'title' => 'Пользователи',
 		'fields' => [
-			'name' => 'Name',
+			'name' => 'Имя',
 			'email' => 'Email',
-			'password' => 'Password',
-			'role' => 'Role',
-			'remember-token' => 'Remember token',
+			'password' => 'Пароль',
+			'role' => 'Роли',
+			'remember-token' => 'Токен',
 		],
 	],
 	'qa_apps' => 'Приложения',

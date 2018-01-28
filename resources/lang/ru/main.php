@@ -13,4 +13,12 @@ return [
     'remember_me' => 'Запомнить меня',
     'forgot_your_password' => 'Забыли свой пароль?',
 
+    'audit' => [
+        'categories' => 'Катеогрии',
+        'checklists' => 'Чек-листы',
+        'requirements' => 'Требования',
+        'objects' => 'Объекты',
+        'object_groups' => 'Группы объектов',
+    ],
+
 ];

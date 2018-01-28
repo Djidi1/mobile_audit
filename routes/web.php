@@ -21,10 +21,11 @@ $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 $this->post('login', 'Auth\LoginController@login')->name('auth.login');
 $this->post('logout', 'Auth\LoginController@logout')->name('auth.logout');
 
+/*
 // Change Password Routes...
 $this->get('change_password', 'Auth\ChangePasswordController@showChangePasswordForm')->name('auth.change_password');
 $this->patch('change_password', 'Auth\ChangePasswordController@changePassword')->name('auth.change_password');
-
+*/
 // Password Reset Routes...
 $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('auth.password.reset');
 $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('auth.password.reset');
@@ -59,9 +60,12 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         Route::resource('cl_categories', 'ClCategoryController');
         Route::resource('checklists', 'ChecklistController');
         Route::resource('requirements', 'RequirementController');
+        Route::resource('audit_objects', 'AuditObjectsController');
+        Route::resource('audit_object_groups', 'AuditObjectGroupsController');
 
     });
 });
+
 //Переключение языков
 Route::get('setlocale/{lang}', function ($lang) {
 

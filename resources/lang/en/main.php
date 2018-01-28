@@ -13,4 +13,12 @@ return [
     'remember_me' => 'Remember Me',
     'forgot_your_password' => 'Forgot your password?',
 
+    'audit' => [
+        'categories' => 'Categories',
+        'checklists' => 'CheckLists',
+        'requirements' => 'Requirements',
+        'objects' => 'Objects',
+        'object_groups' => 'Object Groups',
+    ],
+
 ];
