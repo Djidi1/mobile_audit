@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\User;
 use App\AuditObject;
 use App\AuditObjectGroup;
 use Illuminate\Http\Request;
@@ -18,8 +19,8 @@ class AuditObjectsController extends Controller
     public function index()
     {
         $audit_objects = AuditObject::with('audit_object_groups')->get();
-//        $users = AuditObject::with('users')->get();
-        return view('AuditObjects.index', compact('audit_objects'));
+        $users = AuditObject::with('users')->get();
+        return view('AuditObjects.index', compact('audit_objects', 'users'));
     }
 
     /**
@@ -30,8 +31,8 @@ class AuditObjectsController extends Controller
     public function create()
     {
         $audit_object_groups = AuditObjectGroup::all();
-        $user_id = Auth::user()->id;
-        return view('AuditObjects.form', compact('audit_object_groups', 'user_id'));
+        $users = User::all();
+        return view('AuditObjects.form', compact('audit_object_groups', 'users'));
     }
 
     /**
@@ -46,8 +47,7 @@ class AuditObjectsController extends Controller
             'title' => 'required|min:3'
         ]);
         AuditObject::create($request->all());
-        return redirect('audit_objects');
-//        return redirect()->route('AuditObjects.index');
+        return redirect()->route('audit_objects.index');
     }
 
     /**
@@ -71,8 +71,8 @@ class AuditObjectsController extends Controller
     {
         $entity = $audit_object;
         $audit_object_groups = AuditObjectGroup::all();
-        $user_id = Auth::user()->id;
-        return view('AuditObjects.form', compact('audit_object_groups','entity', 'user_id'));
+        $users = User::all();
+        return view('AuditObjects.form', compact('audit_object_groups','entity', 'users'));
     }
 
     /**
@@ -88,7 +88,7 @@ class AuditObjectsController extends Controller
             'title' => 'required|min:3'
         ]);
         $audit_object->update($request->all());
-        return redirect('audit_objects');
+        return redirect()->route('audit_objects.index');
     }
 
     /**
@@ -101,7 +101,6 @@ class AuditObjectsController extends Controller
     public function destroy(AuditObject $audit_object)
     {
         $audit_object->delete();
-        return redirect('audit_objects');
-//        return redirect()->route('AuditObjects.index');
+        return redirect()->route('audit_objects.index');
     }
 }

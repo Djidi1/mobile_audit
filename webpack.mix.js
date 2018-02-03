@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-mix.browserSync('http://homestead.test');
+mix.browserSync('http://homestead.test:8000');
 
 /*
  |--------------------------------------------------------------------------

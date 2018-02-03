@@ -46,9 +46,6 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         Route::resource('users', 'Admin\UsersController');
         Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
 
-
-
-
     });
 
     Route::group(['middleware' => 'auth'], function () {

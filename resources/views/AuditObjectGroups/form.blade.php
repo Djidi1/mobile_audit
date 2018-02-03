@@ -15,7 +15,7 @@
                 {{ method_field('PUT') }}
             @endisset
             @include('admin.fields.text', ['field' => 'title', 'name' => 'Title'])
-            <input class="waves-effect waves-light btn" type="submit" value="save">
+            <button class="waves-effect waves-light btn" type="submit">Save</button>
         </form>
     </div>
 @endsection

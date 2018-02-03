@@ -32,4 +32,7 @@ class Checklist extends Model
     public function cl_category(){
         return $this->belongsTo('App\ClCategory');
     }
+    public function requirement(){
+        return $this->hasMany('App\Requirement');
+    }
 }

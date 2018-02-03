@@ -16,6 +16,7 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Category</th>
+                        <th>Requrements</th>
                         <th class="right-align">Actions</th>
                     </tr>
                     @foreach($checklists as $checklist)
@@ -23,6 +24,7 @@
                             <td>{{ $checklist->id }}</td>
                             <td>{{ $checklist->title }}</td>
                             <td>{{ $checklist->cl_category->title }}</td>
+                            <td>{{ $checklist->requirement->count() }}</td>
                             <td class="right">
                                 <form action="{{ route('checklists.destroy', $checklist->id) }}" method="POST">
                                     <a type="button" class="waves-effect waves-light btn" href="{{ route('checklists.edit', $checklist->id) }}">edit</a>

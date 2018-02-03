@@ -56,7 +56,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-
+    public function audit_object(){
+        return $this->hasMany('App\AuditObject');
+    }
 
 
     public function sendPasswordResetNotification($token)

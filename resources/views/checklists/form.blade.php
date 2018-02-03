@@ -16,7 +16,7 @@
             @endisset
             @include('admin.fields.text', ['field' => 'title', 'name' => 'Title'])
             @include('admin.fields.select', ['field' => 'cl_category_id', 'name' => 'Category', 'options' => $cl_categories])
-            <input class="waves-effect waves-light btn" type="submit" value="save">
+            <button class="waves-effect waves-light btn" type="submit">save</button>
         </form>
     </div>
 @endsection

@@ -18,7 +18,7 @@
             @include('admin.fields.select', ['field' => 'checklist_id', 'name' => 'Checklist', 'options' => $checklists])
             @include('admin.fields.select', ['field' => 'requirements_type_id', 'name' => 'Requirements type', 'options' => $requirements])
             @include('admin.fields.text', ['field' => 'warning_level', 'name' => 'Level'])
-            <input class="waves-effect waves-light btn" type="submit" value="save">
+            <button class="waves-effect waves-light btn" type="submit">save</button>
         </form>
     </div>
 @endsection

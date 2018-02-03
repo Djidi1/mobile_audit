@@ -16,6 +16,7 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Group</th>
+                        <th>User</th>
                         <th class="right-align">Actions</th>
                     </tr>
                     @foreach($audit_objects as $audit_object)
@@ -23,6 +24,7 @@
                             <td>{{ $audit_object->id }}</td>
                             <td>{{ $audit_object->title }}</td>
                             <td>{{ $audit_object->audit_object_groups->title }}</td>
+                            <td>{{ $audit_object->users->name }}</td>
                             <td class="right">
                                 <form action="{{ route('audit_objects.destroy', $audit_object->id) }}" method="POST">
                                     <a type="button" class="waves-effect waves-light btn" href="{{ route('audit_objects.edit', $audit_object->id) }}">edit</a>

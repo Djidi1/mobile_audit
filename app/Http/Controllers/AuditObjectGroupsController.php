@@ -41,19 +41,19 @@ class AuditObjectGroupsController extends Controller
             'title' => 'required|min:3'
         ]);
         AuditObjectGroup::create($request->all());
-        return redirect('audit_object_groups');
-//        return redirect()->route('AuditObjectGroups.index');
+        return redirect()->route('audit_object_groups.index');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\AuditObjectGroup $clCategory
-     * @return void
+     * @return \Illuminate\Http\Response
      */
     public function show(AuditObjectGroup $clCategory)
     {
         //
+        return redirect()->route('audit_object_groups.index');
     }
 
     /**
@@ -81,8 +81,7 @@ class AuditObjectGroupsController extends Controller
             'title' => 'required|min:3'
         ]);
         $AuditObjectGroup->update($request->all());
-        return redirect('audit_object_groups');
-//        return redirect()->route('AuditObjectGroups.index');
+        return redirect()->route('audit_object_groups.index');
     }
 
     /**
@@ -95,7 +94,6 @@ class AuditObjectGroupsController extends Controller
     public function destroy(AuditObjectGroup $AuditObjectGroup)
     {
         $AuditObjectGroup->delete();
-        return redirect('audit_object_groups');
-//       return redirect()->route('AuditObjectGroups.index');
+        return redirect()->route('audit_object_groups.index');
     }
 }

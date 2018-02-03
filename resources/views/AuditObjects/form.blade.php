@@ -15,9 +15,9 @@
                 {{ method_field('PUT') }}
             @endisset
             @include('admin.fields.text', ['field' => 'title', 'name' => 'Title'])
-            @include('admin.fields.text', ['field' => 'user_id', 'name' => 'UserID'])
+            @include('admin.fields.select', ['field' => 'user_id', 'name' => 'User', 'options' => $users])
             @include('admin.fields.select', ['field' => 'audit_object_group_id', 'name' => 'Group', 'options' => $audit_object_groups])
-            <input class="waves-effect waves-light btn" type="submit" value="save">
+            <button class="waves-effect waves-light btn" type="submit">save</button>
         </form>
     </div>
 @endsection

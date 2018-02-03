@@ -15,7 +15,7 @@ class ChecklistController extends Controller
      */
     public function index()
     {
-        $checklists = Checklist::with('cl_category')->get();
+        $checklists = Checklist::with('cl_category', 'requirement')->get();
         return view('checklists.index', compact('checklists'));
     }
 
