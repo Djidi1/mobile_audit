@@ -17,6 +17,9 @@ Route::post('register', 'API\PassportController@register');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('get-details', 'API\PassportController@getDetails');
+    Route::post('get-audits', 'API\AuditsController@getAudits');
+    Route::post('get-objects', 'AuditObjectsController@getObjects');
+    Route::post('get-checklists', 'ChecklistController@getChecklists');
 });
 /*
 Route::middleware('auth:api')->get('/user', function (Request $request) {

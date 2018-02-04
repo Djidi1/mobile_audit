@@ -13,11 +13,11 @@ class AuditObject extends Model
         'audit_object_group_id'
     ];
 
-    public function audit_object_groups(){
+    public function audit_object_group(){
         return $this->belongsTo('App\AuditObjectGroup', 'audit_object_group_id');
     }
 
-    public function users(){
+    public function user(){
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
 }

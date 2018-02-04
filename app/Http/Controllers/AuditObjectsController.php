@@ -2,15 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\User;
 use App\AuditObject;
 use App\AuditObjectGroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class AuditObjectsController extends Controller
 {
+    // For API
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getObjects(Request $request)
+    {
+        $user = Auth::user();
+        $objects = AuditObject::with('audit_object_group', 'user')->where('user_id', $user->id)->get();
+        return response()->json($objects);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +32,8 @@ class AuditObjectsController extends Controller
      */
     public function index()
     {
-        $audit_objects = AuditObject::with('audit_object_groups')->get();
-        $users = AuditObject::with('users')->get();
-        return view('AuditObjects.index', compact('audit_objects', 'users'));
+        $audit_objects = AuditObject::with('audit_object_group', 'user')->get();
+        return view('AuditObjects.index', compact('audit_objects'));
     }
 
     /**

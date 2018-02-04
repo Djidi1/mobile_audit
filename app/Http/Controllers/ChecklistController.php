@@ -8,6 +8,19 @@ use Illuminate\Http\Request;
 
 class ChecklistController extends Controller
 {
+    // For API
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getChecklists(Request $request)
+    {
+        $checklists = Checklist::with('cl_category','requirement')->get();
+        return response()->json($checklists);
+    }
+
     /**
      * Display a listing of the resource.
      *
