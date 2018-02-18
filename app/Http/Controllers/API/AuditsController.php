@@ -35,32 +35,39 @@ class AuditsController extends Controller
             $audit_id = 0;
             foreach ($data['audit']['check_list'] as $check_list){
                 $check_list_id = $check_list['id'];
-                $audit_id = DB::table('audits')->insertGetId(
-                    [
-                        'title' => $audit_title,
-                        'date_add' => Carbon::parse($audit_add_date),
-                        'user_id' => $user->id,
-                        'checklist_id' => $check_list_id,
-                        'object_id' => $object_id,
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now()
-                    ]
-                );
-                foreach ($check_list['requirement'] as $requirement) {
-                    $requirement_id = $requirement['id'];
-                    $status = $requirement['status'];
-                    $comments = $requirement['comments'];
-                    $comment_text = isset($comments[0]['text']) ? $comments[0]['text'] : '';
-                    DB::table('audit_results')->insert(
+                $audit_id = $check_list['audit_id'];
+                // Если нет ид аудита, то создаем его
+                if ( $audit_id == 0 ) {
+                    $audit_id = DB::table('audits')->insertGetId(
                         [
-                            'audit_id' => $audit_id,
-                            'requirement_id' => $requirement_id,
-                            'result' => $status,
-                            'comment' => $comment_text,
+                            'title' => $audit_title,
+                            'date_add' => Carbon::parse($audit_add_date),
+                            'user_id' => $user->id,
+                            'checklist_id' => $check_list_id,
+                            'object_id' => $object_id,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now()
                         ]
                     );
+                }
+                // Если аудит создан, то проставляем по нему результаты проверок
+                if ( $audit_id > 0 ) {
+                    foreach ($check_list['requirement'] as $requirement) {
+                        $requirement_id = $requirement['id'];
+                        $status = $requirement['status'];
+                        $comments = $requirement['comments'];
+                        $comment_text = isset($comments[0]['text']) ? $comments[0]['text'] : '';
+                        DB::table('audit_results')->insert(
+                            [
+                                'audit_id' => $audit_id,
+                                'requirement_id' => $requirement_id,
+                                'result' => $status,
+                                'comment' => $comment_text,
+                                'created_at' => Carbon::now(),
+                                'updated_at' => Carbon::now()
+                            ]
+                        );
+                    }
                 }
             }
             return $audit_id;
