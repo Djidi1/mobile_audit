@@ -19,6 +19,7 @@ return [
         'requirements' => 'Требования',
         'objects' => 'Объекты',
         'object_groups' => 'Группы объектов',
+        'audit_lists' => 'Список аудитов',
     ],
 
 ];

@@ -54,6 +54,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
             return view('home');
         });
 
+        Route::resource('audit_lists', 'AuditListsController');
+        Route::resource('audit_results', 'AuditResultsController');
         Route::resource('cl_categories', 'ClCategoryController');
         Route::resource('checklists', 'ChecklistController');
         Route::resource('requirements', 'RequirementController');

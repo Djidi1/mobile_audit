@@ -19,6 +19,7 @@ return [
         'requirements' => 'Requirements',
         'objects' => 'Objects',
         'object_groups' => 'Object Groups',
+        'audit_lists' => 'Audits',
     ],
 
 ];

@@ -23,6 +23,10 @@ class Audit extends Model
         return $this->belongsTo('App\AuditObject', 'object_id');
     }
 
+    public function audit_result(){
+        return $this->hasMany('App\AuditResult');
+    }
+
     public function user(){
         return $this->belongsTo('App\User', 'user_id', 'id');
     }

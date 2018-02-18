@@ -40,6 +40,7 @@
         <hr>
         <li><a href="{{ route('audit_objects.index') }}">@lang('main.audit.objects')</a></li>
         <li><a href="{{ route('audit_object_groups.index') }}">@lang('main.audit.object_groups')</a></li>
+        <li><a href="{{ route('audit_lists.index') }}">@lang('main.audit.audit_lists')</a></li>
         @can('user_create')
             <hr>
             <li><a href="{{ route('admin.app_tokens.index') }}">@lang('quickadmin.qa_apps')</a></li>
