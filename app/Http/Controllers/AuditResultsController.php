@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AuditResultsController extends Controller
 {
+
+    public function getResults(Request $request)
+    {
+        $results = AuditResult::with('audit', 'requirement', 'audit_result_attache')->get();
+        return response()->json($results);
+    }
     /**
      * Display a listing of the resource.
      *

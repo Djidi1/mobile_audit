@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('get-audits', 'API\AuditsController@getAudits');
     Route::post('get-objects', 'AuditObjectsController@getObjects');
     Route::post('get-checklists', 'ChecklistController@getChecklists');
+    Route::post('get-results', 'AuditResultsController@getResults');
 
 
     Route::post('put-audits', 'API\AuditsController@putAudits');

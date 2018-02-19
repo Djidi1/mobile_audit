@@ -20,4 +20,7 @@ class AuditResult extends Model
     public function requirement(){
         return $this->belongsTo('App\Requirement');
     }
+    public function audit_result_attache(){
+        return $this->hasMany('App\AuditResultAttache', 'audit_result_id');
+    }
 }
