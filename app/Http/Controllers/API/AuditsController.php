@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class AuditsController extends Controller
 {
@@ -57,7 +58,7 @@ class AuditsController extends Controller
                         $status = $requirement['status'];
                         $comments = $requirement['comments'];
                         $comment_text = isset($comments[0]['text']) ? $comments[0]['text'] : '';
-                        DB::table('audit_results')->insert(
+                        $audit_result_id = DB::table('audit_results')->insertGetId(
                             [
                                 'audit_id' => $audit_id,
                                 'requirement_id' => $requirement_id,
@@ -67,10 +68,36 @@ class AuditsController extends Controller
                                 'updated_at' => Carbon::now()
                             ]
                         );
+                        // Если есть вложения, то сохраняем их в БД
+                        if (isset($comments[0]['attachments'])) {
+                            foreach($comments[0]['attachments'] as $attachments){
+                                $file_name = $attachments['file']['name'];
+                                $file_size = $attachments['file']['size'];
+                                $file_mime = $attachments['file']['type'];
+                                $extension = explode('/', $file_mime )[1];
+                                $data = $attachments['url'];
+                                $data = substr($data, strpos($data, ",")+1);
+                                $file_url = "/img/attaches/attache-".time().".".$extension;
+                                $file_path = public_path(). $file_url;
+                                // Сохраняем фото
+                                Image::make(base64_decode($data))->save($file_path);
+
+                                DB::table('audit_result_attaches')->insert(
+                                    [
+                                        'audit_result_id' => $audit_result_id,
+                                        'file_name' => $file_name,
+                                        'file_path' => $file_url,
+                                        'file_mime' => $file_mime,
+                                        'file_size' => $file_size,
+                                        'created_at' => Carbon::now(),
+                                        'updated_at' => Carbon::now()
+                                    ]
+                                );
+                            }
+                        }
                     }
                 }
-            }
-            return $audit_id;
+            }            return $audit_id;
         }else{
             return 0;
         }
